@@ -1,13 +1,14 @@
 package com.github.syafiqq.fitnesscounter.core.helpers
 
+import com.github.syafiqq.fitnesscounter.core.custom.com.google.firebase.database.DatabaseReference
 import com.github.syafiqq.fitnesscounter.core.db.DataMapper
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import timber.log.Timber
+import com.google.firebase.database.DatabaseReference as BaseDatabaseReference
 
 /**
  * This fitness-counter project created by :
@@ -18,15 +19,9 @@ import timber.log.Timber
  */
 object AuthHelper
 {
-    fun grantTo(
-            user: FirebaseUser,
-            role: String,
-            callback: DatabaseReference.CompletionListener? = DatabaseReference.CompletionListener
-            { error, ref ->
-                Timber.d("%s %s", error, ref)
-            }
-    )
-    {
+    //@formatter:off
+    fun grantTo(user: FirebaseUser, role: String, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompleteListener{})
+    { //@formatter:on
         Timber.d("grantTo [${user}, ${role}, ${callback}]")
 
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
@@ -40,8 +35,9 @@ object AuthHelper
         dbRef.updateChildren(roles, callback)
     }
 
-    fun checkAuthorities(user: FirebaseUser, role: String, listener: AuthorizationListener)
-    {
+    //@formatter:off
+    fun checkAuthorities(user: FirebaseUser, role: String, listener: AuthorizationListener = object:AuthorizationListener{})
+    { //@formatter:on
         val path = DataMapper.userRole(user, role)[0]
         val dbRef = FirebaseDatabase.getInstance().getReference("/${path}")
         dbRef.addListenerForSingleValueEvent(object: ValueEventListener
