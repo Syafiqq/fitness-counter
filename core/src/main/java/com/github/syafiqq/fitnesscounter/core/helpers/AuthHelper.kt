@@ -39,6 +39,32 @@ object AuthHelper
     }
 
     //@formatter:off
+    fun initializeUser(user: FirebaseUser, name:String, role: String, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    { //@formatter:on
+        Timber.d("initializeUser [$user, $name, $role, $callback]")
+
+        val dbRef = FirebaseDatabase.getInstance().getReference("/")
+        val query = HashMap<String, Any>()
+        for ((key, value) in DataMapper.user(user.uid))
+        {
+            when (key)
+            { // @formatter:off
+                "users" -> {query[value + "/name"] = name}
+            }// @formatter:on
+        }
+        for ((key, value) in DataMapper.userRole(user.uid, role))
+        {
+            when (key)
+            { // @formatter:off
+                "users" -> {query[value] = true}
+                "users_groups" -> {query[value] = true}
+            }// @formatter:on
+        }
+
+        dbRef.updateChildren(query, callback)
+    }
+
+    //@formatter:off
     fun checkAuthorities(user: FirebaseUser, role: String, listener: AuthorizationListener = object:AuthorizationListener{})
     { //@formatter:on
         Timber.d("checkAuthorities [$user, $role, $listener]")
