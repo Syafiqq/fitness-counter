@@ -24,4 +24,15 @@ object DataMapper
                 "users_groups" to "${Path.USERS_GROUPS}$role$uid"
         )
     }
+
+    fun user(uid: String? = null): Map<String, String>
+    {
+        Timber.d("user [$uid]")
+
+        val uid = if (uid == null) "" else "/$uid"
+
+        return mapOf<String, String>(
+                "users" to "${Path.USERS}$uid"
+        )
+    }
 }
