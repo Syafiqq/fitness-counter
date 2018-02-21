@@ -1,6 +1,5 @@
 package com.github.syafiqq.fitnesscounter.core.db.external
 
-import com.google.firebase.auth.FirebaseUser
 import timber.log.Timber
 
 /**
@@ -13,13 +12,16 @@ import timber.log.Timber
 
 object DataMapper
 {
-    fun userRole(user: FirebaseUser, role: String): Array<String>
+    fun userRole(uid: String? = null, role: String? = null): Map<String, String>
     {
-        Timber.d("userRole [$user, $role]")
+        Timber.d("userRole [$uid, $role]")
 
-        return arrayOf(
-                "${Path.USERS}/${user.uid}/roles/$role",
-                "${Path.USERS_GROUPS}/${user.uid}/$role"
+        val uid = if (uid == null) "" else "/$uid"
+        val role = if (role == null) "" else "/$role"
+
+        return mapOf<String, String>(
+                "users" to "${Path.USERS}$uid/roles$role",
+                "users_groups" to "${Path.USERS_GROUPS}$role$uid"
         )
     }
 }
