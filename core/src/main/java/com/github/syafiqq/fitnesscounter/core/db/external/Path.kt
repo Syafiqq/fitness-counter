@@ -1,4 +1,4 @@
-package com.github.syafiqq.fitnesscounter.core.db
+package com.github.syafiqq.fitnesscounter.core.db.external
 
 /**
  * This fitness-counter project created by :
@@ -9,7 +9,7 @@ package com.github.syafiqq.fitnesscounter.core.db
  */
 object Path
 {
-    val USERS = "users";
-    val GROUPS = "groups";
-    val USERS_GROUPS = "users_groups";
+    const val USERS = "users"
+    const val GROUPS = "groups"
+    const val USERS_GROUPS = "users_groups"
 }

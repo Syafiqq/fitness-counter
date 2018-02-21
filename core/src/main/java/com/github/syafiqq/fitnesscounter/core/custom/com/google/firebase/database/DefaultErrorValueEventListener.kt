@@ -15,8 +15,8 @@ interface DefaultErrorValueEventListener: ValueEventListener
 {
     override fun onCancelled(error: DatabaseError?)
     {
-        Timber.d("onCancelled [${error}]")
+        Timber.d("onCancelled [$error]")
 
-        error?.let { Timber.d(it.message) }
+        error?.run { Timber.d(this.message) }
     }
 }

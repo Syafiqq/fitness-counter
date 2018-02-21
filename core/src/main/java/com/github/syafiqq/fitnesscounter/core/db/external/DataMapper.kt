@@ -1,6 +1,7 @@
-package com.github.syafiqq.fitnesscounter.core.db
+package com.github.syafiqq.fitnesscounter.core.db.external
 
 import com.google.firebase.auth.FirebaseUser
+import timber.log.Timber
 
 /**
  * This fitness-counter project created by :
@@ -14,9 +15,11 @@ object DataMapper
 {
     fun userRole(user: FirebaseUser, role: String): Array<String>
     {
+        Timber.d("userRole [$user, $role]")
+
         return arrayOf(
-                "${Path.USERS}/${user.uid}/roles/${role}",
-                "${Path.USERS_GROUPS}/${user.uid}/${role}"
+                "${Path.USERS}/${user.uid}/roles/$role",
+                "${Path.USERS_GROUPS}/${user.uid}/$role"
         )
     }
 }

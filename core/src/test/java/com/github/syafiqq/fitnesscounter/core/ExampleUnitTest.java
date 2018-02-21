@@ -1,8 +1,7 @@
 package com.github.syafiqq.fitnesscounter.core;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

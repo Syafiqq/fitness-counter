@@ -13,8 +13,8 @@ import com.google.firebase.database.DatabaseReference as BaseDatabaseReference
  */
 class DatabaseReference
 {
-    interface CompleteListener: BaseDatabaseReference.CompletionListener
+    interface CompletionListener: BaseDatabaseReference.CompletionListener
     {
-        override fun onComplete(error: BaseDatabaseError?, dbRef: BaseDatabaseReference?) = Timber.d("onComplete [${error} ${dbRef}]")
+        override fun onComplete(error: BaseDatabaseError?, ref: BaseDatabaseReference?) = Timber.d("onComplete [$error, $ref]")
     }
 }
