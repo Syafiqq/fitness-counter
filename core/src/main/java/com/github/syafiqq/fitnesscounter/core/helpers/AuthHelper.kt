@@ -25,14 +25,17 @@ object AuthHelper
         Timber.d("grantTo [$user, $role, $callback]")
 
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
-
-        val roles = HashMap<String, Any>()
-        for (path in DataMapper.userRole(user, role))
+        val query = HashMap<String, Any>()
+        for ((key, value) in DataMapper.userRole(user.uid, role))
         {
-            roles[path] = true
+            when (key)
+            { // @formatter:off
+                "users" -> {query[value] = true}
+                "users_groups" -> {query[value] = true}
+            }// @formatter:on
         }
 
-        dbRef.updateChildren(roles, callback)
+        dbRef.updateChildren(query, callback)
     }
 
     //@formatter:off
@@ -40,7 +43,7 @@ object AuthHelper
     { //@formatter:on
         Timber.d("checkAuthorities [$user, $role, $listener]")
 
-        val path = DataMapper.userRole(user, role)[0]
+        val path = DataMapper.userRole(user.uid, role)["users"]
         val dbRef = FirebaseDatabase.getInstance().getReference("/$path")
         dbRef.addListenerForSingleValueEvent(object: ValueEventListener
         {
