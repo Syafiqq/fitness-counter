@@ -12,10 +12,10 @@ import com.google.firebase.database.PropertyName
  */
 @IgnoreExtraProperties
 data class Event(
-        @PropertyName("admin") var admin: String,
-        @PropertyName("createdAt") var createdAt: String,
-        @PropertyName("event") var event: String,
-        @PropertyName("preset_active") var presetActive: String,
-        @PropertyName("presets") var presets: Map<String, Boolean>,
-        @PropertyName("slug") var slug: String
+        @get:PropertyName("admin") @set:PropertyName("admin") var admin: String? = null,
+        @get:PropertyName("createdAt") @set:PropertyName("createdAt") var createdAt: Long? = 0,
+        @get:PropertyName("event") @set:PropertyName("event") var event: String? = null,
+        @get:PropertyName("preset_active") @set:PropertyName("preset_active") var presetActive: String? = null,
+        @get:PropertyName("presets") @set:PropertyName("presets") var presets: Map<String, Boolean> = mapOf(),
+        @get:PropertyName("slug") @set:PropertyName("slug") var slug: String? = null
 )
