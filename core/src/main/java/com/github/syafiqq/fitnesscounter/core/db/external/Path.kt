@@ -12,4 +12,5 @@ object Path
     const val USERS = "users"
     const val GROUPS = "groups"
     const val USERS_GROUPS = "users_groups"
+    const val EVENTS = "events"
 }
