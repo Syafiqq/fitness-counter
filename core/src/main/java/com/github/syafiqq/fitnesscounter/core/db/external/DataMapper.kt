@@ -19,7 +19,7 @@ object DataMapper
         val uid = if (uid == null) "" else "/$uid"
         val role = if (role == null) "" else "/$role"
 
-        return mapOf<String, String>(
+        return mapOf(
                 "users" to "${Path.USERS}$uid/roles$role",
                 "users_groups" to "${Path.USERS_GROUPS}$role$uid"
         )
@@ -31,8 +31,20 @@ object DataMapper
 
         val uid = if (uid == null) "" else "/$uid"
 
-        return mapOf<String, String>(
+        return mapOf(
                 "users" to "${Path.USERS}$uid"
+        )
+    }
+
+    fun event(uid: String? = null, role: String? = null, id: String? = null): Map<String, String>
+    {
+        val uid = if (uid == null) "" else "/$uid"
+        val role = if (role == null) "" else "/$role"
+        val id = if (id == null) "" else "/$id"
+
+        return mapOf(
+                "events" to "${Path.EVENTS}$id",
+                "users" to "${Path.USERS}$uid$role/${Path.EVENTS}$id"
         )
     }
 }
