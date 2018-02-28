@@ -9,7 +9,7 @@ import com.google.firebase.database.PropertyName
  * Email        : id.muhammad.syafiq@gmail.com
  * Github       : Syafiqq
  */
-data class MedicalRecord(
+data class MedicalCheckup(
         // @formatter:off
         // Anthropometric
         @get:PropertyName("tbb")          @set:PropertyName("tbb")          var tbb: Float? = null,
