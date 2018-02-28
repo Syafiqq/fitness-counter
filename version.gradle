@@ -9,6 +9,6 @@ ext {
     libraries = [
             firebase: '11.8.0',
             kotlin  : '1.2.21',
-            timber  : '4.6.0',
+            timber  : '4.6.1',
     ]
 }
