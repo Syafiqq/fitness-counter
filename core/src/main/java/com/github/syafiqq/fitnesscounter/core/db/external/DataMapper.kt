@@ -47,4 +47,15 @@ object DataMapper
                 "users" to "${Path.USERS}$uid$role/${Path.EVENTS}$id"
         )
     }
+
+    fun presetTester(preset: String? = null, queue: Int? = null, branch: String? = null): Map<String, String>
+    {
+        val preset = if (preset == null) "" else "/$preset"
+        val queue = if (queue == null) "" else "/$queue"
+        val branch = if (branch == null) "" else "/$branch"
+
+        return mapOf(
+                "presets" to "${Path.PRESETS}$preset/queues$queue$branch"
+        )
+    }
 }
