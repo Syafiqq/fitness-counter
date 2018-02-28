@@ -13,4 +13,5 @@ object Path
     const val GROUPS = "groups"
     const val USERS_GROUPS = "users_groups"
     const val EVENTS = "events"
+    const val PRESETS = "presets"
 }
