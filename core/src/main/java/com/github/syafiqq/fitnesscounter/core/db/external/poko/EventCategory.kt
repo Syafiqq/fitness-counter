@@ -2,6 +2,7 @@ package com.github.syafiqq.fitnesscounter.core.db.external.poko
 
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.PropertyName
+import java.io.Serializable
 
 /**
  * This fitness-counter project created by :
@@ -11,4 +12,5 @@ import com.google.firebase.database.PropertyName
  * Github       : Syafiqq
  */
 @IgnoreExtraProperties
-data class EventCategory(@get:PropertyName("category") @set:PropertyName("category") var category: String? = null)
+data class EventCategory(@get:PropertyName("category") @set:PropertyName("category") var category: String? = null):
+        Serializable
