@@ -1,5 +1,6 @@
 package com.github.syafiqq.fitnesscounter.core.db.external.poko
 
+import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.PropertyName
 
@@ -17,5 +18,6 @@ data class Event(
         @get:PropertyName("event") @set:PropertyName("event") var event: String? = null,
         @get:PropertyName("preset_active") @set:PropertyName("preset_active") var presetActive: String? = null,
         @get:PropertyName("presets") @set:PropertyName("presets") var presets: Map<String, Boolean> = mapOf(),
-        @get:PropertyName("slug") @set:PropertyName("slug") var slug: String? = null
+        @get:PropertyName("slug") @set:PropertyName("slug") var slug: String? = null,
+        @get:Exclude @set:Exclude var id: String? = null
 )
