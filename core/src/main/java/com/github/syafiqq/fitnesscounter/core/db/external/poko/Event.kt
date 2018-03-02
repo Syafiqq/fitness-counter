@@ -3,6 +3,7 @@ package com.github.syafiqq.fitnesscounter.core.db.external.poko
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.PropertyName
+import java.io.Serializable
 
 /**
  * This fitness-counter project created by :
@@ -20,4 +21,4 @@ data class Event(
         @get:PropertyName("presets") @set:PropertyName("presets") var presets: Map<String, Boolean> = mapOf(),
         @get:PropertyName("slug") @set:PropertyName("slug") var slug: String? = null,
         @get:Exclude @set:Exclude var id: String? = null
-)
+): Serializable
