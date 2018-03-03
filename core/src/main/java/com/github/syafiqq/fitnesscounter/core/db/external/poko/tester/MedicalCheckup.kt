@@ -1,6 +1,7 @@
 package com.github.syafiqq.fitnesscounter.core.db.external.poko.tester
 
 import com.google.firebase.database.PropertyName
+import java.io.Serializable
 
 /**
  * This fitness-counter project created by :
@@ -38,4 +39,4 @@ data class MedicalCheckup(
         // Conclusion
         @get:PropertyName("conclusion")   @set:PropertyName("conclusion")   var conclusion: Boolean = false
         // @formatter:on
-)
+): Serializable
