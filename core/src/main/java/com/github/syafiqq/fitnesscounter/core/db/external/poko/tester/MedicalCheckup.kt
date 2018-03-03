@@ -40,3 +40,34 @@ data class MedicalCheckup(
         @get:PropertyName("conclusion")   @set:PropertyName("conclusion")   var conclusion: Boolean = false
         // @formatter:on
 ): Serializable
+{
+    fun set(checkUp: MedicalCheckup)
+    {
+        // Anthropometric
+        this.tbb = checkUp.tbb
+        this.tbd = checkUp.tbd
+        this.ratio = checkUp.ratio
+        this.weight = checkUp.weight
+        this.bmi = checkUp.bmi
+        // Posture and Gait
+        this.posture = checkUp.posture
+        this.gait = checkUp.gait
+        // Cardiovascular
+        this.pulse = checkUp.pulse
+        this.pressure = checkUp.pressure
+        this.ictus = checkUp.ictus
+        this.heart = checkUp.heart
+        // Respiratory
+        this.frequency = checkUp.frequency
+        this.retraction = checkUp.retraction
+        this.rLocation = checkUp.rLocation
+        this.breath = checkUp.breath
+        this.bPipeline = checkUp.bPipeline
+        // Verbal
+        this.vision = checkUp.vision
+        this.hearing = checkUp.hearing
+        this.verbal = checkUp.verbal
+        // Conclusion
+        this.conclusion = checkUp.conclusion
+    }
+}
