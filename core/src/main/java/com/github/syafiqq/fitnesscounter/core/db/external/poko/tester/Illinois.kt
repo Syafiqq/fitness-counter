@@ -12,9 +12,9 @@ import java.io.Serializable
  */
 data class Illinois(
         // @formatter:off
-        @get:PropertyName("start")        @set:PropertyName("start")        var start: Int? = null,
-        @get:PropertyName("end")          @set:PropertyName("end")          var end: Int? = null,
-        @get:PropertyName("elapsed")      @set:PropertyName("elapsed")      var elapsed: Int? = null
+        @get:PropertyName("start")        @set:PropertyName("start")        var start: Long? = null,
+        @get:PropertyName("end")          @set:PropertyName("end")          var end: Long? = null,
+        @get:PropertyName("elapsed")      @set:PropertyName("elapsed")      var elapsed: Long? = null
         // @formatter:on
 ): Serializable
 {
