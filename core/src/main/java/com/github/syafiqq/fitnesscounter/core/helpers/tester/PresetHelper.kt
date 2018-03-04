@@ -4,6 +4,7 @@ import com.github.syafiqq.fitnesscounter.core.custom.com.google.firebase.databas
 import com.github.syafiqq.fitnesscounter.core.db.external.DataMapper
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.Illinois
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.MedicalCheckup
+import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.VerticalJump
 import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 import com.google.firebase.database.DatabaseReference as BaseDatabaseReference
@@ -48,5 +49,12 @@ object PresetHelper
     { //@formatter:on
         Timber.d("saveIllinois [$preset, $queue, $data, $callback]")
         saveBranch(preset, queue, "illinois", data, callback)
+    }
+
+    //@formatter:off
+    fun saveVerticalJump(preset:String, queue:Int, data:VerticalJump, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    { //@formatter:on
+        Timber.d("saveVerticalJump [$preset, $queue, $data, $callback]")
+        saveBranch(preset, queue, "vertical", data, callback)
     }
 }
