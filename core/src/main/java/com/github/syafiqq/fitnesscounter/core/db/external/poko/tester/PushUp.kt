@@ -17,9 +17,9 @@ data class PushUp(
         // @formatter:on
 ): Serializable
 {
-    fun set(throwing: PushUp)
+    fun set(pushUp: PushUp)
     {
-        this.start = throwing.start
-        this.counter = throwing.counter
+        this.start = pushUp.start
+        this.counter = pushUp.counter
     }
 }
