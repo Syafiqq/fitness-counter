@@ -5,6 +5,7 @@ import com.github.syafiqq.fitnesscounter.core.db.external.DataMapper
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.Illinois
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.MedicalCheckup
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.PushUp
+import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.SitUp
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.ThrowingBall
 import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.VerticalJump
 import com.google.firebase.database.FirebaseDatabase
@@ -72,5 +73,12 @@ object PresetHelper
     { //@formatter:on
         Timber.d("savePushUp [$preset, $queue, $data, $callback]")
         saveBranch(preset, queue, "push", data, callback)
+    }
+
+    //@formatter:off
+    fun saveSitUp(preset:String, queue:Int, data:SitUp, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    { //@formatter:on
+        Timber.d("saveSitUp [$preset, $queue, $data, $callback]")
+        saveBranch(preset, queue, "sit", data, callback)
     }
 }
