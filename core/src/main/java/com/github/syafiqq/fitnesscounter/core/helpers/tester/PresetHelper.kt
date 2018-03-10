@@ -89,4 +89,24 @@ object PresetHelper
         Timber.d("saveRun1600m [$preset, $queue, $data, $callback]")
         saveBranch(preset, queue, "run", data, callback)
     }
+
+    //@formatter:off
+    fun savesRun1600m(preset:String, runs:Map<Int, Run1600m>, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    { //@formatter:on
+        Timber.d("savesRun1600m [$preset, $runs, $callback]")
+        val dbRef = FirebaseDatabase.getInstance().getReference("/")
+        val query = HashMap<String, Any>()
+        for ((queue, data) in runs)
+        {
+            for ((key, value) in DataMapper.presetTester(preset, queue, "run"))
+            {
+                when (key)
+                {   // @formatter:off
+                    "presets" -> {query[value] = data}
+                }   // @formatter:on
+            }
+        }
+
+        dbRef.updateChildren(query, callback)
+    }
 }
