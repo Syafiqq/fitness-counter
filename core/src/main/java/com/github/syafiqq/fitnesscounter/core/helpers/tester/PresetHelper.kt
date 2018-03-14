@@ -26,6 +26,7 @@ object PresetHelper
     //@formatter:off
     private fun saveBranch(preset: String, stamp:String, queue: Int, branch:String, data:Any, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
+        var stamp = "20180313"
         Timber.d("saveBranch [$preset, $queue, $branch, $data, $callback]")
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
         val query = HashMap<String, Any>()
