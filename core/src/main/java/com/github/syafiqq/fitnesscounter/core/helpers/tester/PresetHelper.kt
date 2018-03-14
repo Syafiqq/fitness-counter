@@ -24,12 +24,12 @@ import com.google.firebase.database.DatabaseReference as BaseDatabaseReference
 object PresetHelper
 {
     //@formatter:off
-    private fun saveBranch(preset: String, queue: Int, branch:String, data:Any, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    private fun saveBranch(preset: String, stamp:String, queue: Int, branch:String, data:Any, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveBranch [$preset, $queue, $branch, $data, $callback]")
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
         val query = HashMap<String, Any>()
-        for ((key, value) in DataMapper.presetTester(preset, queue, branch))
+        for ((key, value) in DataMapper.presetTester(preset, stamp, queue, branch))
         {
             when (key)
             { // @formatter:off
@@ -42,63 +42,63 @@ object PresetHelper
     }
 
     //@formatter:off
-    fun saveMedicalCheckUp(preset:String, queue:Int, data:MedicalCheckup, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveMedicalCheckUp(preset:String, stamp:String, queue:Int, data:MedicalCheckup, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveMedicalCheckUp [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "medical", data, callback)
+        saveBranch(preset, stamp, queue, "medical", data, callback)
     }
 
     //@formatter:off
-    fun saveIllinois(preset:String, queue:Int, data:Illinois, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveIllinois(preset:String, stamp:String, queue:Int, data:Illinois, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveIllinois [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "illinois", data, callback)
+        saveBranch(preset, stamp, queue, "illinois", data, callback)
     }
 
     //@formatter:off
-    fun saveVerticalJump(preset:String, queue:Int, data:VerticalJump, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveVerticalJump(preset:String, stamp:String, queue:Int, data:VerticalJump, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveVerticalJump [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "vertical", data, callback)
+        saveBranch(preset, stamp, queue, "vertical", data, callback)
     }
 
     //@formatter:off
-    fun saveThrowingBall(preset:String, queue:Int, data:ThrowingBall, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveThrowingBall(preset:String, stamp:String, queue:Int, data:ThrowingBall, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveThrowingBall [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "throwing", data, callback)
+        saveBranch(preset, stamp, queue, "throwing", data, callback)
     }
 
     //@formatter:off
-    fun savePushUp(preset:String, queue:Int, data:PushUp, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun savePushUp(preset:String, stamp:String, queue:Int, data:PushUp, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("savePushUp [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "push", data, callback)
+        saveBranch(preset, stamp, queue, "push", data, callback)
     }
 
     //@formatter:off
-    fun saveSitUp(preset:String, queue:Int, data:SitUp, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveSitUp(preset:String, stamp:String, queue:Int, data:SitUp, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveSitUp [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "sit", data, callback)
+        saveBranch(preset, stamp, queue, "sit", data, callback)
     }
 
     //@formatter:off
-    fun saveRun1600m(preset:String, queue:Int, data:Run1600m, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun saveRun1600m(preset:String, stamp:String, queue:Int, data:Run1600m, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("saveRun1600m [$preset, $queue, $data, $callback]")
-        saveBranch(preset, queue, "run", data, callback)
+        saveBranch(preset, stamp, queue, "run", data, callback)
     }
 
     //@formatter:off
-    fun savesRun1600m(preset:String, runs:Map<Int, Run1600m>, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+    fun savesRun1600m(preset:String, stamp:String, runs:Map<Int, Run1600m>, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
         Timber.d("savesRun1600m [$preset, $runs, $callback]")
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
         val query = HashMap<String, Any>()
         for ((queue, data) in runs)
         {
-            for ((key, value) in DataMapper.presetTester(preset, queue, "run"))
+            for ((key, value) in DataMapper.presetTester(preset, stamp, queue, "run"))
             {
                 when (key)
                 {   // @formatter:off
