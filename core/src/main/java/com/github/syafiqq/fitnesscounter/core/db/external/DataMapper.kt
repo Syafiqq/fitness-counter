@@ -48,14 +48,15 @@ object DataMapper
         )
     }
 
-    fun presetTester(preset: String? = null, queue: Int? = null, branch: String? = null): Map<String, String>
+    fun presetTester(preset: String? = null, stamp: String? = null, queue: Int? = null, branch: String? = null): Map<String, String>
     {
         val preset = if (preset == null) "" else "/$preset"
+        val stamp = if (stamp == null) "" else "/$stamp"
         val queue = if (queue == null) "" else "/$queue"
         val branch = if (branch == null) "" else "/$branch"
 
         return mapOf(
-                "presets" to "${Path.PRESETS}$preset/queues$queue$branch"
+                "presets" to "${Path.PRESETS}$preset/queues$stamp$queue$branch"
         )
     }
 }
