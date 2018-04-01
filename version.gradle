@@ -3,12 +3,12 @@ ext {
             compiled_sdk       : 27,
             target_sdk         : 27,
             min_sdk            : 16,
-            android_build_tools: '3.0.1',
+            android_build_tools: '3.1.0',
     ]
 
     libraries = [
             firebase: '11.8.0',
-            kotlin  : '1.2.21',
+            kotlin  : '1.2.30',
             timber  : '4.6.1',
     ]
 }
