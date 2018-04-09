@@ -70,4 +70,8 @@ data class MedicalCheckup(
         // Conclusion
         this.conclusion = checkUp.conclusion
     }
+
+    companion object {
+        val EMPTY_DATA = MedicalCheckup()
+    }
 }

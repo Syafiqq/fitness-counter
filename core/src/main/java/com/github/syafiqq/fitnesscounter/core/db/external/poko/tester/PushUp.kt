@@ -22,4 +22,8 @@ data class PushUp(
         this.start = pushUp.start
         this.counter = pushUp.counter
     }
+
+    companion object {
+        val EMPTY_DATA = PushUp()
+    }
 }

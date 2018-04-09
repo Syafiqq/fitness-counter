@@ -28,4 +28,8 @@ data class VerticalJump(
         this.try3 = vertical.try3
         this.deviation = vertical.deviation
     }
+
+    companion object {
+        val EMPTY_DATA = VerticalJump()
+    }
 }

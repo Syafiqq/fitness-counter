@@ -23,4 +23,8 @@ data class SitUp(
         this.start = sitUp.start
         this.counter = sitUp.counter
     }
+
+    companion object {
+        val EMPTY_DATA = SitUp()
+    }
 }

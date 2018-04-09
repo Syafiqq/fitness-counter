@@ -30,4 +30,8 @@ data class Run1600m(
         this.end = run.end
         this.elapsed = run.elapsed
     }
+
+    companion object {
+        val EMPTY_DATA = Run1600m()
+    }
 }

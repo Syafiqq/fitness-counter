@@ -22,4 +22,8 @@ data class ThrowingBall(
         this.start = throwing.start
         this.counter = throwing.counter
     }
+
+    companion object {
+        val EMPTY_DATA = ThrowingBall()
+    }
 }

@@ -24,4 +24,8 @@ data class Illinois(
         this.end = illinois.end
         this.elapsed = illinois.elapsed
     }
+
+    companion object {
+        val EMPTY_DATA = Illinois()
+    }
 }
