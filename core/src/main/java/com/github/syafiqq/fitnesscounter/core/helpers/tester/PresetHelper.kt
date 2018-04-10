@@ -2,13 +2,7 @@ package com.github.syafiqq.fitnesscounter.core.helpers.tester
 
 import com.github.syafiqq.fitnesscounter.core.custom.com.google.firebase.database.DatabaseReference
 import com.github.syafiqq.fitnesscounter.core.db.external.DataMapper
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.Illinois
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.MedicalCheckup
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.PushUp
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.Run1600m
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.SitUp
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.ThrowingBall
-import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.VerticalJump
+import com.github.syafiqq.fitnesscounter.core.db.external.poko.tester.*
 import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 import com.google.firebase.database.DatabaseReference as BaseDatabaseReference
@@ -26,7 +20,6 @@ object PresetHelper
     //@formatter:off
     private fun saveBranch(preset: String, stamp:String, queue: Int, branch:String, data:Any, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
-        var stamp = "20180313"
         Timber.d("saveBranch [$preset, $stamp $queue, $branch, $data, $callback]")
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
         val query = HashMap<String, Any>()
@@ -94,7 +87,6 @@ object PresetHelper
     //@formatter:off
     fun savesRun1600m(preset:String, stamp:String, runs:Map<Int, Run1600m>, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
     { //@formatter:on
-        var stamp = "20180313"
         Timber.d("savesRun1600m [$preset, $stamp $runs, $callback]")
         val dbRef = FirebaseDatabase.getInstance().getReference("/")
         val query = HashMap<String, Any>()
