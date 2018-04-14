@@ -103,4 +103,54 @@ object PresetHelper
 
         dbRef.updateChildren(query, callback)
     }
+
+    object Bulk {
+        //@formatter:off
+        private fun saveBranch(preset: String, branch:String, bulks:List<Triple<Int, String, Any>>, callback: BaseDatabaseReference.CompletionListener = object :DatabaseReference.CompletionListener{})
+        { //@formatter:on
+            Timber.d("saveBranch [$preset, $branch, $bulks, $callback]")
+            val dbRef = FirebaseDatabase.getInstance().getReference("/")
+            val query = HashMap<String, Any>()
+            for ((queue, stamp, bulk) in bulks) {
+                query[DataMapper.presetTester(preset, stamp, queue, branch)["presets"]!!] = bulk
+            }
+
+            dbRef.updateChildren(query, callback)
+        }
+
+        fun saveMedicalCheckUp(preset: String, medical: List<Triple<Int, String, MedicalCheckup>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) { //@formatter:on
+            Timber.d("saveMedicalCheckUp [$preset, $medical, $callback]")
+            saveBranch(preset, "medical", medical, callback)
+        }
+
+        fun saveIllinois(preset: String, illinois: List<Triple<Int, String, Illinois>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("saveIllinois [$preset, $illinois, $callback]")
+            saveBranch(preset, "illinois", illinois, callback)
+        }
+
+        fun saveVerticalJump(preset: String, vertical: List<Triple<Int, String, VerticalJump>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("saveVerticalJump [$preset, $vertical, $callback]")
+            saveBranch(preset, "vertical", vertical, callback)
+        }
+
+        fun saveThrowingBall(preset: String, throwing: List<Triple<Int, String, ThrowingBall>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("saveThrowingBall [$preset, $throwing, $callback]")
+            saveBranch(preset, "throwing", throwing, callback)
+        }
+
+        fun savePushUp(preset: String, push: List<Triple<Int, String, PushUp>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("savePushUp [$preset, $push, $callback]")
+            saveBranch(preset, "push", push, callback)
+        }
+
+        fun saveSitUp(preset: String, sit: List<Triple<Int, String, SitUp>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("saveSitUp [$preset, $sit, $callback]")
+            saveBranch(preset, "sit", sit, callback)
+        }
+
+        fun saveRun1600m(preset: String, run: List<Triple<Int, String, Run1600m>>, callback: BaseDatabaseReference.CompletionListener = object : DatabaseReference.CompletionListener {}) {
+            Timber.d("saveRun1600m [$preset, $run, $callback]")
+            saveBranch(preset, "run", run, callback)
+        }
+    }
 }
